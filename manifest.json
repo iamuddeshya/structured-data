@@ -1,16 +1,12 @@
 {
-  "vendor": "vtex",
-  "name": "structured-data",
-  "version": "0.8.1",
-  "title": "Structure data",
-  "description": "Structure data",
-  "defaultLocale": "pt-BR",
+  "vendor": "deguns",
+  "name": "deguns-structured-data",
+  "version": "0.1.0",
   "builders": {
     "react": "3.x",
     "docs": "0.x",
     "messages": "1.x"
   },
-  "mustUpdateAt": "2019-08-29",
   "scripts": {
     "postreleasy": "vtex publish --verbose"
   },

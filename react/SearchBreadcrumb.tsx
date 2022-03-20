@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
-import { Helmet } from 'vtex.render-runtime'
-import { BreadcrumbList } from 'schema-dts'
-import { helmetJsonLdProp } from 'react-schemaorg'
+import { BreadcrumbList, ListItem } from 'schema-dts'
+import { jsonLdScriptProps } from 'react-schemaorg'
 
 import { getBaseUrl } from './modules/baseUrl'
 
@@ -17,15 +16,17 @@ const getSearchBreadcrumb = (breadcrumb?: SearchBreadcrumbItem[]) => {
 
   const baseUrl = getBaseUrl()
 
-  return helmetJsonLdProp<BreadcrumbList>({
+  const categoryItems: ListItem[] = breadcrumb.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: baseUrl + item.href,
+  }))
+
+  return jsonLdScriptProps<BreadcrumbList>({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: breadcrumb.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: item.name,
-      item: baseUrl + item.href,
-    })),
+    itemListElement: categoryItems,
   })
 }
 
@@ -36,7 +37,7 @@ interface Props {
 const SearchBreadcrumbStructuredData: FC<Props> = ({ breadcrumb }) => {
   const breadcrumbLD = getSearchBreadcrumb(breadcrumb)
 
-  return <Helmet script={[breadcrumbLD]} />
+  return <script {...breadcrumbLD} />
 }
 
 export default SearchBreadcrumbStructuredData

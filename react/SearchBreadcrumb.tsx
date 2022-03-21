@@ -36,7 +36,7 @@ interface Props {
 const SearchBreadcrumbStructuredData: FC<Props> = ({ breadcrumb }) => {
   const breadcrumbLD = getSearchBreadcrumb(breadcrumb)
 
-  return <Helmet script={[breadcrumbLD]} />
+  return <script {...breadcrumbLD} />
 }
 
 export default SearchBreadcrumbStructuredData

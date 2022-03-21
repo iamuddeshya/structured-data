@@ -1,5 +1,4 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import { WebSite } from 'schema-dts'
 import { jsonLdScriptProps } from 'react-schemaorg'
 

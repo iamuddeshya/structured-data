@@ -1,5 +1,5 @@
 query getSettings {
-  appSettings(app: "vtex.structured-data", version: "0.x")
+  appSettings(app: "deguns.deguns-structured-data", version: "0.x")
     @context(provider: "vtex.apps-graphql") {
     message
   }

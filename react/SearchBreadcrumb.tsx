@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { BreadcrumbList } from 'schema-dts'
-import { helmetJsonLdProp } from 'react-schemaorg'
+import { jsonLdScriptProps } from 'react-schemaorg'
 
 import { getBaseUrl } from './modules/baseUrl'
 
@@ -16,7 +16,7 @@ const getSearchBreadcrumb = (breadcrumb?: SearchBreadcrumbItem[]) => {
 
   const baseUrl = getBaseUrl()
 
-  return helmetJsonLdProp<BreadcrumbList>({
+  return jsonLdScriptProps<BreadcrumbList>({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: breadcrumb.map((item, index) => ({
